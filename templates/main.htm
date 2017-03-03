@@ -1,0 +1,33 @@
+<?php session_start();?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+登陆用户：--{$member.username}--
+<br />
+--{if $member.role == 99}--
+<div>管理员</div>
+<a href="MemberController.php?flag=getAllList">人员管理</a><br />
+<a href="UnitController.php?flag=getAllList">单位管理</a><br />
+--{elseif $member.role == 1}--
+<div>团行政值班员</div>
+--{elseif $member.role == 2}--
+<div>团通信值班员</div>
+--{elseif $member.role == 3}--
+<div>营值班员</div>
+<a href="GbgbController.php?flag=getAllList&userId=--{$member.id}--&role=--{$member.role}--">干部跟班管理</a><br />
+--{else}--
+<div>连值班员</div>
+<a href="VehicleController.php?flag=getAllList">车辆动用情况</a><br />
+<a href="UnitController.php?flag=getAllList">单位管理</a><br />
+<a href="ReviewerController.php?flag=getAllList">审核人管理</a><br />
+<a href="GbgbController.php?flag=getAllList&userId=--{$member.id}--&role=--{$member.role}--">干部跟班管理</a><br />
+--{/if}--
+
+
+</body>
+</html>
